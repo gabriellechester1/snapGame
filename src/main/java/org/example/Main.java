@@ -13,8 +13,6 @@ import java.util.Stack;
 public class Main {
 
     static CardService cardService = new CardService();
-    private static Integer snapRules = 0;
-    private static Integer numberOfDecks = 0;
 
     public static void main(String[] args) {
         System.out.println("Please enter the number of decks you want to play with: (e.g) 1, 2 ,3");
@@ -23,8 +21,9 @@ public class Main {
             System.out.println("Please enter a number");
             inputNumberOfDecks.next();
         }
-        numberOfDecks = inputNumberOfDecks.nextInt();
+        int numberOfDecks = inputNumberOfDecks.nextInt();
 
+        int snapRules = 0;
         if(numberOfDecks == 1) {
             System.out.println("Please enter the number for which set of rules you would like to snap on: (e.g) 1, 2 ,3");
             System.out.println("1.value  2.suit");
@@ -45,7 +44,7 @@ public class Main {
             snapRules = inputSnapRules.nextInt();
         }
 
-        List<Card> cards = cardService.createDeckOfCards(Integer.valueOf(numberOfDecks));
+        List<Card> cards = cardService.createDeckOfCards(numberOfDecks);
 
         List[] hands = cardService.dealCards(cards);
 
@@ -57,9 +56,6 @@ public class Main {
 
         PlayGame playGame = new PlayGame(new RulesService(snapRules));
         playGame.play(players, stack);
-
-        String[] arg = {""};
-
 
         System.out.println("Would you like to play again? (Y/N)");
         Scanner playAgain = new Scanner(System.in);
