@@ -13,8 +13,8 @@ import java.util.Stack;
 public class Main {
 
     static CardService cardService = new CardService();
-    private static Integer SNAP_RULES = 0;
-    private static Integer NUMBER_OF_DECKS = 0;
+    private static Integer snapRules = 0;
+    private static Integer numberOfDecks = 0;
 
     public static void main(String[] args) {
         System.out.println("Please enter the number of decks you want to play with: (e.g) 1, 2 ,3");
@@ -23,9 +23,9 @@ public class Main {
             System.out.println("Please enter a number");
             inputNumberOfDecks.next();
         }
-        NUMBER_OF_DECKS = inputNumberOfDecks.nextInt();
+        numberOfDecks = inputNumberOfDecks.nextInt();
 
-        if(NUMBER_OF_DECKS == 1) {
+        if(numberOfDecks == 1) {
             System.out.println("Please enter the number for which set of rules you would like to snap on: (e.g) 1, 2 ,3");
             System.out.println("1.value  2.suit");
             Scanner inputSnapRules = new Scanner(System.in);
@@ -33,6 +33,7 @@ public class Main {
                 System.out.println("Please enter 1 or 2");
                 inputSnapRules.next();
             }
+            snapRules = inputSnapRules.nextInt();
         } else {
             System.out.println("Please enter the number for which set of rules you would like to snap on: (e.g) 1, 2 ,3");
             System.out.println("1.value  2.suit  3.value & suit");
@@ -41,10 +42,10 @@ public class Main {
                 System.out.println("Please enter 1, 2 or 3");
                 inputSnapRules.next();
             }
-            SNAP_RULES = inputSnapRules.nextInt();
+            snapRules = inputSnapRules.nextInt();
         }
 
-        List<Card> cards = cardService.createDeckOfCards(Integer.valueOf(NUMBER_OF_DECKS));
+        List<Card> cards = cardService.createDeckOfCards(Integer.valueOf(numberOfDecks));
 
         List[] hands = cardService.dealCards(cards);
 
@@ -54,8 +55,22 @@ public class Main {
 
         Stack<Card> stack = new Stack<>();
 
-        PlayGame playGame = new PlayGame(new RulesService(SNAP_RULES));
+        PlayGame playGame = new PlayGame(new RulesService(snapRules));
         playGame.play(players, stack);
+
+        String[] arg = {""};
+
+
+        System.out.println("Would you like to play again? (Y/N)");
+        Scanner playAgain = new Scanner(System.in);
+        while (!playAgain.hasNext("[YyNn]")) {
+            System.out.println("Y or N");
+            playAgain.next();
+        }
+        String playAgainResult = playAgain.nextLine();
+        if(playAgainResult.equalsIgnoreCase("y")) {
+            main(args);
+        }
 
     }
 }
