@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.PlayGameTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-08-18T11:06:26" hostname="MacBook-Pro-3.broadband" time="1.608">
+  <properties/>
+  <testcase name="play_shouldDeclareDrawIfBothPlayersRunOutOfCards()" classname="org.example.PlayGameTest" time="1.55"/>
+  <testcase name="play_shouldCallRulesServiceToCheckSnap()" classname="org.example.PlayGameTest" time="0.017"/>
+  <testcase name="play_shouldEndGameWhenNumberOfPlayersIsOne()" classname="org.example.PlayGameTest" time="0.016"/>
+  <system-out><![CDATA[player 1 plays card: 2 of HEARTS
+player 1 has 0 cards left
+-------------------
+player 2 plays card: 2 of DIAMONDS
+player 2 has 0 cards left
+-------------------
+All cards have been dealt, neither player wins!
+All cards have been dealt, neither player wins!
+player 1 IS THE WINNER!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

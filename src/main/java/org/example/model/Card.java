@@ -1,0 +1,13 @@
+package org.example.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
+public class Card {
+
+    private String suit;
+    private String value;
+
+}
